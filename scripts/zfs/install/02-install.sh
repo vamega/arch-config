@@ -99,7 +99,7 @@ EOSF
   bootctl --path=/efi update
 
   # Create user
-  useradd -m user
+  useradd -m vmadiath
 
 EOF
 
@@ -109,13 +109,13 @@ arch-chroot /mnt /bin/passwd
 
 # Set user passwd
 print "Set user password"
-arch-chroot /mnt /bin/passwd user
+arch-chroot /mnt /bin/passwd vmadiath
 
 # Configure sudo
 print "Configure sudo"
 cat > /mnt/etc/sudoers <<"EOF"
 root ALL=(ALL) ALL
-user ALL=(ALL) ALL
+vmadiath ALL=(ALL) ALL
 Defaults rootpw
 EOF
 

@@ -3,7 +3,7 @@
   become: yes
 
   vars:
-    user: user
+    user: vmadiath
     shell: /usr/bin/fish
     cmdline: ""
 
