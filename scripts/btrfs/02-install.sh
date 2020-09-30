@@ -73,7 +73,7 @@ cat > /mnt/etc/mkinitcpio.conf <<"EOF"
 MODULES=(i915 intel_agp)
 BINARIES=(/usr/bin/btrfs)
 FILES=()
-HOOKS=(base systemd autodetect modconf block keyboard sd-vconsole sd-encrypt fsck filesystems)
+HOOKS=(base systemd keyboard autodetect modconf block sd-vconsole sd-encrypt fsck filesystems)
 COMPRESSION="lz4"
 EOF
 
