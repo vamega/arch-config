@@ -17,7 +17,22 @@ systemctl start reflector
 
 # Install
 print "Install Arch Linux"
-pacstrap /mnt base base-devel linux linux-firmware intel-ucode btrfs-progs grub efibootmgr grub-btrfs vim git ansible snapper connman wpa_supplicant
+pacstrap /mnt \
+         base \
+         base-devel \
+         linux \
+         linux-firmware \
+         intel-ucode \
+         btrfs-progs \
+         grub \
+         efibootmgr \
+         grub-btrfs \
+         vim \
+         git \
+         ansible \
+         snapper \
+         connman \
+         wpa_supplicant
 
 # Generate fstab
 print "Generate fstab"
@@ -48,9 +63,9 @@ EOF
 
 # Prepare locales and keymap
 print "Prepare locales and keymap"
-echo "KEYMAP=fr" > /mnt/etc/vconsole.conf
-sed -i 's/#\(fr_FR.UTF-8\)/\1/' /mnt/etc/locale.gen
-echo 'LANG="fr_FR.UTF-8"' > /mnt/etc/locale.conf
+echo "KEYMAP=us" > /mnt/etc/vconsole.conf
+sed -i 's/#\(en_US.UTF-8\)/\1/' /mnt/etc/locale.gen
+echo 'LANG="en_US.UTF-8"' > /mnt/etc/locale.conf
 
 # Prepare initramfs
 print "Prepare initramfs"
@@ -72,7 +87,7 @@ arch-chroot /mnt /bin/bash -xe <<"EOF"
 
   # Set date
   timedatectl set-ntp true
-  timedatectl set-timezone Europe/Paris
+  timedatectl set-timezone America/New_York
 
   # Generate locale
   locale-gen

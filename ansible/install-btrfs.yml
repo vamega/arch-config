@@ -6,6 +6,7 @@
     user: vmadiath
     shell: /usr/bin/fish
     cmdline: ""
+    timezone: America/New_York
 
   pre_tasks:
 

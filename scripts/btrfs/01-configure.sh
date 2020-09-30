@@ -62,7 +62,16 @@ swapon $ESWAP
 # Create LUKS
 print "Create LUKS"
 # https://savannah.gnu.org/bugs/?55093
-cryptsetup -v --type luks1 --cipher aes-xts-plain64 --key-size 256 --hash sha256 --iter-time 2000 --use-urandom --verify-passphrase luksFormat $LUKS
+cryptsetup \
+    --vervose \
+    --type luks1 \
+    --cipher aes-xts-plain64 \
+    --key-size 256 \
+    --hash sha256 \
+    --iter-time 2000 \
+    --use-urandom \
+    --verify-passphrase \
+    luksFormat $LUKS
 cryptsetup luksOpen $LUKS universe
 BTRFS=/dev/mapper/universe
 
