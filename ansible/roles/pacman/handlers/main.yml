@@ -1,6 +1,0 @@
----
-- name: enable reflector
-  systemd:
-    name: reflector
-    daemon_reload: yes
-    enabled: yes

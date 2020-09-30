@@ -6,10 +6,14 @@ print () {
     echo -e "\n\033[1m> $1\033[0m\n"
 }
 
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+CONFIG_ROOT_DIR="$(realpath ${SCRIPT_DIR}/../..)"
+
 # Sort mirrors
 print "Sort mirrors"
 pacman -Sy reflector --noconfirm
-reflector --country France --country Germany --latest 6 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+cp ${CONFIG_ROOT_DIR}/ansible/roles/pacman/files/reflector.conf /etc/xdg/reflector/reflector.conf
+systemctl start reflector
 
 # Install
 print "Install Arch Linux"

@@ -33,11 +33,24 @@
     update_cache: yes
     upgrade: yes
 
-- name: Install reflector service
+- name: Install reflector config file.
   copy:
-    src: reflector.service
-    dest: /etc/systemd/system/
-  notify: enable reflector
+    src: reflector.conf
+    dest: /etc/xdg/reflector/reflector.conf
+
+- name: enable reflector service
+  systemd:
+    name: reflector
+    enabled: yes
+    daemon_reload: no
+
+#  TODO: See if we can run reflector manually in case it's never been run.
+- name: enable reflector timer
+  systemd:
+    name: reflector.timer
+    state: started
+    enabled: yes
+    daemon_reload: no
 
 - name: Install pacman hooks
   become: no
